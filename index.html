@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Memory Game - by Dario Mercado</title>
+    <link rel="stylesheet" href="styles.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Anton|Frank+Ruhl+Libre|Fredoka+One|Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 id='headline'>Memory Game!</h1>
+    </header>
+    <section class='score-board'>
+        <h2 class='score-left'>Low Score: <br>--</h2>
+        <button class='start-button' id='start-btn'>Start New Game</button>
+        <button class='reset-button' id='reset-btn'>Reset</button>
+        <h2 class='score-right' id='pairs-left'>Pairs Left: <br>12</h2>
+    </section>
+    <section class='game-board' id='card-deck' style='display: none;'>
+        <div class='row1 col1 card'></div>
+        <div class='row1 col2 card'></div>
+        <div class='row1 col3 card'></div>
+        <div class='row1 col4 card'></div>
+        <div class='row1 col5 card'></div>
+        <div class='row2 col1 card'></div>
+        <div class='row2 col2 card'></div>
+        <div class='row2 col3 card'></div>
+        <div class='row2 col4 card'></div>
+        <div class='row2 col5 card'></div>
+        <div class='row3 col1 card'></div>
+        <div class='row3 col2 card'></div>
+        <div class='row3 col3 card score'>
+            <h2>Score:</h2>
+            <h2 id='click-score'>0</h2>
+        </div>
+        <div class='row3 col4 card'></div>
+        <div class='row3 col5 card'></div>
+        <div class='row4 col1 card'></div>
+        <div class='row4 col2 card'></div>
+        <div class='row4 col3 card'></div>
+        <div class='row4 col4 card'></div>
+        <div class='row4 col5 card'></div>
+        <div class='row5 col1 card'></div>
+        <div class='row5 col2 card'></div>
+        <div class='row5 col3 card'></div>
+        <div class='row5 col4 card'></div>
+        <div class='row5 col5 card'></div>
+    </section>
+    <footer>
+
+    </footer>
+    <script src="functions.js"></script>
+</body>
+</html>
