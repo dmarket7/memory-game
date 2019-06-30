@@ -180,6 +180,7 @@ img {
     img {
         width: 63px;
         height: 63px;
+        z-index: 1;
     }
 
     .card.score {
