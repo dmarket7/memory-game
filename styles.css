@@ -163,7 +163,7 @@ img {
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
 
     .game-board {
         grid-column-gap: 2px;

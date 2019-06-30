@@ -111,7 +111,7 @@ function checkClickFunction(event) {
 
 function resetGame(){
     gameBoard.style.display = 'none';
-    pairsLeft = 12;
+    pairsRemaining = 12;
     pairsLeft.innerHTML = 'Pairs Left:<br>' + pairsRemaining;
     itemsClicked = 0;
     clickScore.innerText = itemsClicked;
