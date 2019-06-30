@@ -38,7 +38,7 @@ function dealCards(){
     for(var i = 0; i < shuffledArr.length / 2; i++) {
         var image = document.createElement('IMG');
         image.src=shuffledArr[i];
-        image.style.display = 'none';
+        image.style.visibility = 'hidden';
         if(gameBoard.childNodes[i*2 + 1].firstChild) {
             gameBoard.childNodes[i*2 + 1].removeChild(gameBoard.childNodes[i*2 + 1].firstChild);
         }
@@ -47,7 +47,7 @@ function dealCards(){
     for(var i = 12; i < shuffledArr.length; i++) {
         var image = document.createElement('IMG');
         image.src=shuffledArr[i];
-        image.style.display = 'none';
+        image.style.visibility = 'hidden';
         if(gameBoard.childNodes[(i+2)*2-1].firstChild){
             gameBoard.childNodes[(i+2)*2-1].removeChild(gameBoard.childNodes[(i+2)*2-1].firstChild);
         }
@@ -64,8 +64,8 @@ function addGameLogic(cards){
 function checkClickFunction(event) {
     // CHECK IF USER CLICKED ON COVERED CARD // IF NOT, IGNORE
     if(event.target.tagName !== 'IMG' && setTimeoutClear) {
-        if(event.target.childNodes[0].tagName === 'IMG'){
-            event.target.childNodes[0].style.display = 'block';
+        if(event.target.childNodes[0].style.visibility === 'hidden'){
+            event.target.childNodes[0].style.visibility = 'visible';
             itemsClicked++;
             clickScore.innerText = itemsClicked;
             // CHECK IF A PREVIOUS CARD HAS BEEN FLIPPED // IF NOT IGNORE
@@ -94,9 +94,9 @@ function checkClickFunction(event) {
                     headline.innerText = 'D\'oh!!!';
                     headline.style.color = '#A93F55';
                     setTimeout(function(){
-                        firstCardSelected.style.display = 'none';
+                        firstCardSelected.style.visibility = 'hidden';
                         firstCardSelected = '';
-                        event.target.childNodes[0].style.display = 'none';
+                        event.target.childNodes[0].style.visibility = 'hidden';
                         headline.innerText = 'Memory Game!';
                         headline.style.color = '#fff';
                         setTimeoutClear = true;
