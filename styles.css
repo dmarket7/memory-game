@@ -164,6 +164,11 @@ img {
         height: 115px;
     }
 
+    .cover {
+        width: 111px;
+        height: 111px;
+    }
+
     img {
         width: 111px;
         height: 111px;
@@ -186,6 +191,11 @@ img {
         height: 65px;
         border: 1px solid #fff;
         font-size: 12px;
+    }
+
+    .cover {
+        width: 63px;
+        height: 63px;
     }
 
     img {
@@ -212,6 +222,11 @@ img {
         height: 50px;
         border: 1px solid #fff;
         font-size: 10px;
+    }
+
+    .cover {
+        width: 48px;
+        height: 48px;
     }
 
     img {
