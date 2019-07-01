@@ -37,21 +37,27 @@ function dealCards(){
     var shuffledArr = shuffle(simpsons);
     for(var i = 0; i < shuffledArr.length / 2; i++) {
         var image = document.createElement('IMG');
+        var cardCover = document.createElement('DIV');
+        cardCover.classList.add('cover');
+        cardCover.style.visibility = 'hidden';
         image.src=shuffledArr[i];
-        image.style.visibility = 'hidden';
         if(gameBoard.childNodes[i*2 + 1].firstChild) {
             gameBoard.childNodes[i*2 + 1].removeChild(gameBoard.childNodes[i*2 + 1].firstChild);
         }
         gameBoard.childNodes[i*2 + 1].appendChild(image);
+        gameBoard.childNodes[i*2 + 1].appendChild(cardCover);
     }
     for(var i = 12; i < shuffledArr.length; i++) {
         var image = document.createElement('IMG');
+        var cardCover = document.createElement('DIV');
+        cardCover.classList.add('cover');
+        cardCover.style.visibility = 'hidden';
         image.src=shuffledArr[i];
-        image.style.visibility = 'hidden';
         if(gameBoard.childNodes[(i+2)*2-1].firstChild){
             gameBoard.childNodes[(i+2)*2-1].removeChild(gameBoard.childNodes[(i+2)*2-1].firstChild);
         }
         gameBoard.childNodes[(i+2)*2-1].appendChild(image);
+        gameBoard.childNodes[(i+2)*2-1].appendChild(cardCover);
     }
 }
 
@@ -64,13 +70,15 @@ function addGameLogic(cards){
 function checkClickFunction(event) {
     // CHECK IF USER CLICKED ON COVERED CARD // IF NOT, IGNORE
     if(event.target.tagName !== 'IMG' && setTimeoutClear) {
-        if(event.target.childNodes[0].style.visibility === 'hidden'){
-            event.target.childNodes[0].style.visibility = 'visible';
+        console.log(event.target)
+        if(event.target.style.visibility === 'visible'){
+            console.log(event.target)
+            event.target.style.visibility = 'hidden';
             itemsClicked++;
             clickScore.innerText = itemsClicked;
             // CHECK IF A PREVIOUS CARD HAS BEEN FLIPPED // IF NOT IGNORE
             if(firstCardSelected) {
-                if(event.target.childNodes[0].src === firstCardSelected.src) {
+                if(event.target.previousSibling.src === firstCardSelected.src) {
                 // IS SUCCESSFUL
                     setTimeoutClear = false;
                     pairsRemaining--;
@@ -94,16 +102,17 @@ function checkClickFunction(event) {
                     headline.innerText = 'D\'oh!!!';
                     headline.style.color = '#A93F55';
                     setTimeout(function(){
-                        firstCardSelected.style.visibility = 'hidden';
+                        firstCardSelected.nextSibling.style.visibility = 'visible';
                         firstCardSelected = '';
-                        event.target.childNodes[0].style.visibility = 'hidden';
+                        event.target.style.visibility = 'visible';
                         headline.innerText = 'Memory Game!';
                         headline.style.color = '#fff';
                         setTimeoutClear = true;
                     }, 1500);
                 }
             } else {
-                firstCardSelected = event.target.childNodes[0];
+                firstCardSelected = event.target.previousSibling;
+                console.log(firstCardSelected);
             }
         }
     }
@@ -135,28 +144,28 @@ function shuffle(arra1) {
 // Links to Images Game Data
 
 var simpsons = [
-    'https://media1.giphy.com/media/ASd0Ukj0y3qMM/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media1.giphy.com/media/ASd0Ukj0y3qMM/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media3.giphy.com/media/jUwpNzg9IcyrK/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media3.giphy.com/media/jUwpNzg9IcyrK/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media0.giphy.com/media/RG3lm5VlrbDV7YNana/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media0.giphy.com/media/RG3lm5VlrbDV7YNana/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media2.giphy.com/media/bYpgM8bi7QV3i/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media2.giphy.com/media/bYpgM8bi7QV3i/200.webp?cid=790b76115d1829f65447384373256b8b&rid=200.webp',
-    'https://media1.giphy.com/media/lWZ77CqQbInm0/200.webp?cid=790b76115d182ae176523041458b6a31&rid=200.webp',
-    'https://media1.giphy.com/media/lWZ77CqQbInm0/200.webp?cid=790b76115d182ae176523041458b6a31&rid=200.webp',
-    'https://media2.giphy.com/media/VOKtv2wKlK8w0/giphy.webp?cid=790b76115d182ae176523041458b6a31&rid=giphy.webp',
-    'https://media2.giphy.com/media/VOKtv2wKlK8w0/giphy.webp?cid=790b76115d182ae176523041458b6a31&rid=giphy.webp',
-    'https://media0.giphy.com/media/4oMoIbIQrvCjm/200.webp?cid=790b76115d182ae176523041458b6a31&rid=200.webp',
-    'https://media0.giphy.com/media/4oMoIbIQrvCjm/200.webp?cid=790b76115d182ae176523041458b6a31&rid=200.webp',
-    'https://media0.giphy.com/media/3o6Mbbd48zhH43XSBq/200.webp?cid=790b76115d183a9e47706e6255edd65a&rid=200.webp',
-    'https://media0.giphy.com/media/3o6Mbbd48zhH43XSBq/200.webp?cid=790b76115d183a9e47706e6255edd65a&rid=200.webp',
-    'https://media1.giphy.com/media/3o8doT9BL7dgtolp7O/200w.webp?cid=790b76115d182b066c4b666d4116e276&rid=200w.webp',
-    'https://media1.giphy.com/media/3o8doT9BL7dgtolp7O/200w.webp?cid=790b76115d182b066c4b666d4116e276&rid=200w.webp',
-    'https://media1.giphy.com/media/p7UAjPDEglWes/giphy.webp?cid=790b76115d182b177555624c73e2423f&rid=giphy.webp',
-    'https://media1.giphy.com/media/p7UAjPDEglWes/giphy.webp?cid=790b76115d182b177555624c73e2423f&rid=giphy.webp',
-    'https://media2.giphy.com/media/8T16SKOf363KM/giphy.webp?cid=790b76115d182b177555624c73e2423f&rid=giphy.webp',
-    'https://media2.giphy.com/media/8T16SKOf363KM/giphy.webp?cid=790b76115d182b177555624c73e2423f&rid=giphy.webp',
-    'https://media1.giphy.com/media/erg72ZtkHfayA/200.webp?cid=790b76115d182b84337372426f233f67&rid=200.webp',
-    'https://media1.giphy.com/media/erg72ZtkHfayA/200.webp?cid=790b76115d182b84337372426f233f67&rid=200.webp'
+    'https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif',
+    'https://media.giphy.com/media/ASd0Ukj0y3qMM/giphy.gif',
+    'https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif',
+    'https://media.giphy.com/media/jUwpNzg9IcyrK/giphy.gif',
+    'https://media.giphy.com/media/RG3lm5VlrbDV7YNana/giphy.gif',
+    'https://media.giphy.com/media/RG3lm5VlrbDV7YNana/giphy.gif',
+    'https://media.giphy.com/media/bYpgM8bi7QV3i/giphy.gif',
+    'https://media.giphy.com/media/bYpgM8bi7QV3i/giphy.gif',
+    'http://imgur.com/gallery/c8xPBcg',
+    'http://imgur.com/gallery/c8xPBcg',
+    'https://media.giphy.com/media/VOKtv2wKlK8w0/giphy.gif',
+    'https://media.giphy.com/media/VOKtv2wKlK8w0/giphy.gif',
+    'https://66.media.tumblr.com/04fa67b161278c1c90457a494e9f19a6/tumblr_inline_mw8lueburJ1ru1szg.gif',
+    'https://66.media.tumblr.com/04fa67b161278c1c90457a494e9f19a6/tumblr_inline_mw8lueburJ1ru1szg.gif',
+    'https://media.giphy.com/media/3o6Mbbd48zhH43XSBq/giphy.gif',
+    'https://media.giphy.com/media/3o6Mbbd48zhH43XSBq/giphy.gif',
+    'https://media3.giphy.com/media/3orieKiQ8CBu0MuPK0/giphy.gif',
+    'https://media3.giphy.com/media/3orieKiQ8CBu0MuPK0/giphy.gif',
+    'https://media.giphy.com/media/p7UAjPDEglWes/giphy.gif',
+    'https://media.giphy.com/media/p7UAjPDEglWes/giphy.gif',
+    'https://media0.giphy.com/media/UMRb3OBnZelAQ/giphy.gif',
+    'https://media0.giphy.com/media/UMRb3OBnZelAQ/giphy.gif',
+    'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif',
+    'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif'
 ]
