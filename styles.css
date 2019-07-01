@@ -167,6 +167,8 @@ img {
     .cover {
         width: 111px;
         height: 111px;
+        position: absolute;
+        background-color: blue;
     }
 
     img {
@@ -196,12 +198,13 @@ img {
     .cover {
         width: 63px;
         height: 63px;
+        position: absolute;
+        background-color: blue;
     }
 
     img {
         width: 63px;
         height: 63px;
-        z-index: 1;
     }
 
     .card.score {
@@ -227,6 +230,8 @@ img {
     .cover {
         width: 48px;
         height: 48px;
+        position: absolute;
+        background-color: blue;
     }
 
     img {
