@@ -41,7 +41,7 @@ function dealCards(){
         cardCover.classList.add('cover');
         cardCover.style.visibility = 'visible';
         image.src=shuffledArr[i];
-        if(gameBoard.childNodes[i*2 + 1].firstChild) {
+        while(gameBoard.childNodes[i*2 + 1].firstChild) {
             gameBoard.childNodes[i*2 + 1].removeChild(gameBoard.childNodes[i*2 + 1].firstChild);
         }
         gameBoard.childNodes[i*2 + 1].appendChild(image);
@@ -53,7 +53,7 @@ function dealCards(){
         cardCover.classList.add('cover');
         cardCover.style.visibility = 'visible';
         image.src=shuffledArr[i];
-        if(gameBoard.childNodes[(i+2)*2-1].firstChild){
+        while(gameBoard.childNodes[(i+2)*2-1].firstChild){
             gameBoard.childNodes[(i+2)*2-1].removeChild(gameBoard.childNodes[(i+2)*2-1].firstChild);
         }
         gameBoard.childNodes[(i+2)*2-1].appendChild(image);
@@ -126,6 +126,7 @@ function resetGame(){
     clickScore.innerText = itemsClicked;
     headline.innerText = 'Memory Game!';
     headline.style.color = '#fff';
+    firstCardSelected = '';
 }
 
 

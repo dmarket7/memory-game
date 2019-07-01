@@ -97,6 +97,7 @@ section > button {
 .cover {
     width: 146px;
     height: 146px;
+    position: absolute;
     background-color: blue;
 }
 
