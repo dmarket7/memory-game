@@ -22,8 +22,6 @@ pairsLeft.innerHTML = 'Pairs Left:<br>' + pairsRemaining;
 startBtn.addEventListener('click', startNewGame);
 
 resetBtn.addEventListener('click', function(){
-    startBtn.style.display = 'block';
-    resetBtn.style.display = 'none';
     resetGame();
 });
 
@@ -141,6 +139,8 @@ function resetGame(){
     headline.style.color = '#fff';
     firstCardSelected = '';
     setTimeoutClear = false;
+    startBtn.style.display = 'block';
+    resetBtn.style.display = 'none';
 }
 
 
@@ -167,8 +167,6 @@ var simpsons = [
     'https://media.giphy.com/media/RG3lm5VlrbDV7YNana/giphy.gif',
     'https://media.giphy.com/media/bYpgM8bi7QV3i/giphy.gif',
     'https://media.giphy.com/media/bYpgM8bi7QV3i/giphy.gif',
-    'https://i.imgur.com/c8xPBcg.gif',
-    'https://i.imgur.com/c8xPBcg.gif',
     'https://media.giphy.com/media/VOKtv2wKlK8w0/giphy.gif',
     'https://media.giphy.com/media/VOKtv2wKlK8w0/giphy.gif',
     'https://66.media.tumblr.com/04fa67b161278c1c90457a494e9f19a6/tumblr_inline_mw8lueburJ1ru1szg.gif',
@@ -182,5 +180,7 @@ var simpsons = [
     'https://media0.giphy.com/media/UMRb3OBnZelAQ/giphy.gif',
     'https://media0.giphy.com/media/UMRb3OBnZelAQ/giphy.gif',
     'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif',
-    'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif'
+    'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif',
+    'https://media2.giphy.com/media/3o6Mb97xII6pHm32Ew/giphy.gif',
+    'https://media2.giphy.com/media/3o6Mb97xII6pHm32Ew/giphy.gif'
 ];
