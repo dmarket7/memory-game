@@ -1,6 +1,7 @@
 var startBtn = document.getElementById('start-btn');
 var resetBtn = document.getElementById('reset-btn');
 var gameBoard = document.getElementById('card-deck');
+var bestGame = document.getElementById('best-score');
 var pairsLeft = document.getElementById('pairs-left');
 var clickScore = document.getElementById('click-score');
 var headline = document.getElementById('headline');
@@ -8,6 +9,12 @@ var headline = document.getElementById('headline');
 var firstCardSelected = '';
 var itemsClicked = 0;
 var setTimeoutClear = true;
+
+if(localStorage.getItem('lowScore')) {
+    bestGame.innerHTML = 'Low Score: <br>' + localStorage.getItem('lowScore');
+} else {
+    bestGame.innerHTML = 'Low Score: <br>--';
+}
 
 var pairsRemaining = 12;
 pairsLeft.innerHTML = 'Pairs Left:<br>' + pairsRemaining;
@@ -24,6 +31,7 @@ function startNewGame(){
     startBtn.style.display = 'none';
     resetBtn.style.display = 'block';
 
+    setTimeoutClear = true;
     itemsClicked = 0;
     pairsRemaining = 12;
     dealCards();
@@ -70,9 +78,7 @@ function addGameLogic(cards){
 function checkClickFunction(event) {
     // CHECK IF USER CLICKED ON COVERED CARD // IF NOT, IGNORE
     if(event.target.tagName !== 'IMG' && setTimeoutClear) {
-        console.log(event.target)
         if(event.target.style.visibility === 'visible'){
-            console.log(event.target)
             event.target.style.visibility = 'hidden';
             itemsClicked++;
             clickScore.innerText = itemsClicked;
@@ -87,6 +93,14 @@ function checkClickFunction(event) {
                     headline.style.color = '#38A700';
                     if(pairsRemaining === 0) {
                         headline.innerText = 'You Win!!!';
+                        if(localStorage.getItem('lowScore')){
+                            if(itemsClicked < localStorage.getItem('lowScore')) {
+                                localStorage.setItem('lowScore', itemsClicked);
+                            } 
+                        } else {
+                            localStorage.setItem('lowScore', itemsClicked);
+                        }
+                        bestGame.innerHTML = 'Low Score: <br>' + localStorage.getItem('lowScore');
                         setTimeoutClear = true;
                     } else {
                         setTimeout(function(){
@@ -112,7 +126,6 @@ function checkClickFunction(event) {
                 }
             } else {
                 firstCardSelected = event.target.previousSibling;
-                console.log(firstCardSelected);
             }
         }
     }
@@ -127,6 +140,7 @@ function resetGame(){
     headline.innerText = 'Memory Game!';
     headline.style.color = '#fff';
     firstCardSelected = '';
+    setTimeoutClear = false;
 }
 
 
@@ -169,4 +183,4 @@ var simpsons = [
     'https://media0.giphy.com/media/UMRb3OBnZelAQ/giphy.gif',
     'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif',
     'https://media.giphy.com/media/erg72ZtkHfayA/giphy.gif'
-]
+];
