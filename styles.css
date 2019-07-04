@@ -186,7 +186,7 @@ img {
 
     .game-board {
         grid-column-gap: 2px;
-        grid-row-gap: 2px;
+        grid-row-gap: 10px;
     }
 
     .card {
@@ -219,7 +219,7 @@ img {
 
     .game-board {
         grid-column-gap: 2px;
-        grid-row-gap: 2px;
+        grid-row-gap: 10px;
     }
 
     .card {
