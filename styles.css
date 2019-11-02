@@ -77,7 +77,7 @@ section > button {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5px;
-    grid-row-gap: 5             px;
+    grid-row-gap: 5px;
     margin-top: 10px;
 }
 
@@ -88,7 +88,6 @@ section > button {
     border-radius: 5px;
     justify-self: center;
     text-align: center;
-    /* font-family: 'Frank Ruhl Libre', serif; */
     font-family: 'Josefin Sans', sans-serif;
     font-size: 20px;
     position: relative;
